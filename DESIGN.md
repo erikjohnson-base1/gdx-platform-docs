@@ -8,6 +8,8 @@
 
 STIBO MDM serves as the **single source of truth** for all product data, feeding both the current commerce platform (SIP / SAP Commerce) and the future platform (PCP / GDX) through the **Cloud Integration Layer (GCP Pub/Sub)**.
 
+![Alt text](/images/stibo-current-approach.png)
+
 
 ### Key Characteristics & Strategic Challenges
 
@@ -43,6 +45,7 @@ STIBO MDM serves as the **single source of truth** for all product data, feeding
 Contentstack—already live at Costco for CMS—becomes the **product content authority**, feeding SIP via the **Cloud Integration Layer**.  
 The **Product API contract remains unchanged**, ensuring **zero frontend or mobile impact**.
 
+![Alt text](/images/proposed-content-stack.png)
 
 
 ### Key Strategic Advantages
@@ -72,56 +75,13 @@ The **Product API contract remains unchanged**, ensuring **zero frontend or mobi
 
 ---
 
-## 3. Phase 2: Composed API with Fallback Safety
-
-### Overview
-
-A **Composed Product API** becomes the frontend-facing layer, intelligently routing:
-
-- **Product content** → Contentstack  
-- **Commerce logic** → SIP  
-
-Product data flows continuously from Contentstack through Pub/Sub to SIP.  
-A **triple-layer safety model** ensures zero cart abandonment and uninterrupted experience.
-
-### Safety Mechanism
-
-If sync delays or gaps occur:
-- SIP can **query Contentstack directly** in real time
-- Feature flags enable **instant rollback** if required
-
-### Key Architecture Features
-
-- **Separation of Concerns**
-  - Content: Contentstack
-  - Commerce: SIP
-
-- **Triple-Layer Safety**
-  1. **Dual-Write Sync**  
-     Contentstack → Cloud Integration Layer → SIP
-  2. **Fallback Path**  
-     Composed API → SIP if Contentstack unavailable
-  3. **API Fail-Safe**  
-     SIP → Contentstack APIs if sync is delayed or incomplete
-
-- **Zero Frontend Risk**
-  - Same JSON contract preserved
-  - No application code changes
-
-- **Graceful Degradation**
-  - SIP serves cached product data if Contentstack unavailable
-
-- **Incremental Rollout**
-  - Traffic shifted gradually via feature flags per application
-
----
 
 ## 4. Future End State (Contentstack Fully Migrated)
 
 ### Overview
 
 SAP Commerce (SIP) is fully replaced by **PCP / GDX**.  
-Contentstack is the **battle-tested product master**, containing:
+Contentstack is contains:
 
 - Product data
 - Variants
@@ -138,17 +98,13 @@ The Cloud Integration Layer remains for system-to-system data exchange.
 ### Key Strategic Outcomes
 
 - **SIP Fully Retired**
-  - PCP / GDX handles pricing, inventory, cart, checkout, orders
+  -  GDX handles pricing, inventory, cart, checkout, orders
 
-- **Contentstack Proven at Scale**
-  - All product master data validated in production
+- **Contentstack handles**
+  - All product master data authoring
 
 - **Clean Separation**
   - Content vs. Commerce with no overlap
-
-- **Platform Rationalization**
-  - 2 platforms instead of 3  
-    (Contentstack + PCP/GDX)
 
 - **Migration Foundation**
   - Content migrated independently
