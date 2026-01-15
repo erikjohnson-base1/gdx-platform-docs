@@ -76,7 +76,7 @@ The **Product API contract remains unchanged**, ensuring **zero frontend or mobi
 ---
 
 
-## 4. Future End State (Contentstack Fully Migrated)
+## 3. Future State (Contentstack Fully Migrated)
 
 ### Overview
 
@@ -112,7 +112,9 @@ The Cloud Integration Layer remains for system-to-system data exchange.
 
 ---
 
-## 5. Data Modeling Capability: Contentstack vs STIBO
+# Capabilities Review
+
+## 1. Data Modeling Capability: Contentstack vs STIBO
 
 ### Conceptual Difference
 
@@ -134,7 +136,7 @@ Unlike STIBO’s predefined PIM object model, Contentstack provides a **flexible
 
 ---
 
-## 6. Classification Attributes: Core Difference
+## 2. Classification Attributes: Core Difference
 
 ### STIBO
 
@@ -169,7 +171,7 @@ Use **Contentstack Sidebar Apps** to:
 
 ---
 
-## 7. Capabilities Scorecard: Contentstack vs STIBO
+## 3. Capabilities Summary: Contentstack vs STIBO
 
 | Capability Area | Contentstack | STIBO STEP | Winner |
 |----------------|-------------|------------|--------|
@@ -190,7 +192,7 @@ Use **Contentstack Sidebar Apps** to:
 
 ---
 
-## 8. Workflow & Security Model Comparison
+## 4. Workflow & Security Model Comparison
 
 ### Contentstack
 
